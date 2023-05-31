@@ -22,12 +22,19 @@ export const deleteProductService = async (id: string) => {
   const response: AxiosResponse<null> = await getAxiosInstance({
     baseURL: "api-eAdmin",
   }).delete(`/api/products/deleteBy/${id}`);
-  return response;
+  return response.data;
 };
 
-export const updateProductService = async (id: any, product: Product) => {
+export const getOneProductService = async (id: string): Promise<Product> => {
+  const response: AxiosResponse<Product> = await getAxiosInstance({
+    baseURL: "api-eAdmin",
+  }).get(`/api/products/getBy/${id}`);
+  return response.data;
+};
+
+export const updateProductService = async (id: string, product: Product) => {
   const response: AxiosResponse<Product> = await getAxiosInstance({
     baseURL: "api-eAdmin",
   }).patch(`/api/products/updateBy/${id}`, product);
-  return response;
+  return response.data;
 };
