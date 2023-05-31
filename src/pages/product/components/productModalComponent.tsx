@@ -51,6 +51,7 @@ export default function ProductModalComponent({
                   name="name"
                   value={product.name}
                   onChange={handleChangeName}
+                  required
                 />
               </div>
               <div className="mb-4">
@@ -68,6 +69,7 @@ export default function ProductModalComponent({
                   name="price"
                   value={product.price}
                   onChange={handleChangePrice}
+                  required
                 />
               </div>
               <div className="flex justify-end">
@@ -75,7 +77,7 @@ export default function ProductModalComponent({
                   className="bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   onClick={onSubmit}
                 >
-                  {updatingProduct ? "modificar" : "crear"}
+                  {updatingProduct ? "Modificar" : "Crear"}
                 </button>
               </div>
             </form>

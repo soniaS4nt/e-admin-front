@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Product } from "../components/productTable";
 import { createProductService, updateProductService } from "../api";
 import router from "next/router";
+import { Product } from "@/interfaces/menu.interface";
 
 export default function useProductOperations() {
   const [product, setProduct] = useState<Product>({

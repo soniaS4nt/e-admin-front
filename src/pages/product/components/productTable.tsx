@@ -20,16 +20,7 @@ import { useContext, useEffect } from "react";
 import useProductOperations from "../hooks/useProductOperations";
 import useProductModal from "../hooks/useProductModal";
 import ProductModalComponent from "./productModalComponent";
-
-export interface Product {
-  name: string;
-  img?: string;
-  category?: string;
-  price: string;
-}
-export interface ProductWithId extends Product {
-  id: string;
-}
+import { Product, ProductWithId } from "@/interfaces/menu.interface";
 
 interface Props {
   products: ProductWithId[];
@@ -57,13 +48,18 @@ export function ProductTable({ products }: Props) {
   };
 
   const handleEdit = async (id) => {
-    const productOne: Product = await getOneProductService(id);
+    try {
+      const productOne: Product = await getOneProductService(id);
 
-    setEditingProduct(id);
-    setProduct({ name: productOne.name, price: productOne.price });
+      setEditingProduct(id);
+      setProduct({ name: productOne.name, price: productOne.price });
 
-    setShowModal(true);
-    router.push("product");
+      setShowModal(true);
+    } catch (error) {
+      console.log("error al editar");
+    }
+
+    router.push("/product");
   };
 
   return (

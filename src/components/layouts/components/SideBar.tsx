@@ -1,4 +1,4 @@
-import { menuItems } from "@/helper/menuItems";
+import { menuItems } from "@/helpers/menuItems";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

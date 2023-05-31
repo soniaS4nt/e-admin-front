@@ -1,5 +1,5 @@
+import { Product } from "@/interfaces/menu.interface";
 import { getAxiosInstance } from "@/services/axiosInstance";
-import { Product } from "./components/productTable";
 import { AxiosResponse } from "axios";
 
 export const getProductsService = async (): Promise<Product[]> => {
