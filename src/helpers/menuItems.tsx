@@ -6,11 +6,17 @@ export const menuItems: MenuItems[] = [
   {
     id: 0,
     icon: <ProductIcon className={" w-6 h-6"} />,
+    name: "Dashboard",
+    href: "/",
+  },
+  {
+    id: 1,
+    icon: <ProductIcon className={" w-6 h-6"} />,
     name: "Productos",
     href: "/product",
   },
   {
-    id: 1,
+    id: 2,
     icon: <ReportIcon className={" w-6 h-6"} />,
     name: "Reportes",
     href: "/report",
