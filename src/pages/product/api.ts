@@ -1,40 +1,45 @@
-import { Product } from "@/interfaces/menu.interface";
+import { Product, ProductWithId } from "@/interfaces/product.interface";
 import { getAxiosInstance } from "@/services/axiosInstance";
 import { AxiosResponse } from "axios";
 
-export const getProductsService = async (): Promise<Product[]> => {
-  const response: AxiosResponse<Product[]> = await getAxiosInstance({
-    baseURL: "api-eAdmin",
-  }).get(`/api/products/getAll`);
-  return response.data;
+export const getProductsService = async (): Promise<ProductWithId[]> => {
+  const response: AxiosResponse<ProductWithId[]> = await getAxiosInstance({
+    baseURL: "api-products",
+  }).get(`/getAll`);
+  const { data } = response;
+  return data;
 };
 
 export const createProductService = async (
   product: Product
-): Promise<Product> => {
-  const response: AxiosResponse<Product> = await getAxiosInstance({
-    baseURL: "api-eAdmin",
-  }).post(`/api/products/create`, product);
-  return response.data;
+): Promise<ProductWithId> => {
+  const response: AxiosResponse<ProductWithId> = await getAxiosInstance({
+    baseURL: "api-products",
+  }).post(`/create`, product);
+  const { data } = response;
+  return data;
 };
 
 export const deleteProductService = async (id: string) => {
   const response: AxiosResponse<null> = await getAxiosInstance({
-    baseURL: "api-eAdmin",
-  }).delete(`/api/products/deleteBy/${id}`);
-  return response.data;
+    baseURL: "api-products",
+  }).delete(`/deleteBy/${id}`);
+  const { data } = response;
+  return data;
 };
 
-export const getOneProductService = async (id: string): Promise<Product> => {
-  const response: AxiosResponse<Product> = await getAxiosInstance({
-    baseURL: "api-eAdmin",
-  }).get(`/api/products/getBy/${id}`);
-  return response.data;
+export const getOneProductService = async (id: string) => {
+  const response: AxiosResponse<ProductWithId> = await getAxiosInstance({
+    baseURL: "api-products",
+  }).get(`/getBy/${id}`);
+  const { data } = response;
+  return data;
 };
 
 export const updateProductService = async (id: string, product: Product) => {
-  const response: AxiosResponse<Product> = await getAxiosInstance({
-    baseURL: "api-eAdmin",
-  }).patch(`/api/products/updateBy/${id}`, product);
-  return response.data;
+  const response: AxiosResponse<ProductWithId> = await getAxiosInstance({
+    baseURL: "api-products",
+  }).patch(`/updateBy/${id}`, product);
+  const { data } = response;
+  return data;
 };
