@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { AxiosConfig, BaseURL } from "./interface";
 
 const baseUrlDic: { [key in BaseURL]: string } = {
-  "api-eAdmin": "http://localhost:8080",
+  "api-products": "http://localhost:8080/api/products",
 };
 
 export const getAxiosInstance = ({ baseURL }: AxiosConfig): AxiosInstance => {
