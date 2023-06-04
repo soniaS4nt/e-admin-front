@@ -15,7 +15,7 @@ export default function SideBar() {
               href={item.href}
               className={`nav-link ${
                 router.pathname === item.href ? "bg-black text-slate-50" : ""
-              } flex flex-row items-center p-2 w-full rounded-xl justify-center`}
+              } flex flex-row items-center px-2 py-4 w-full rounded-lg justify-center`}
             >
               <div>{item.icon}</div> {item.name}
             </Link>
