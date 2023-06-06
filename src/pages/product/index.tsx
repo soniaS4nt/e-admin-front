@@ -1,14 +1,21 @@
-import { GetServerSideProps } from "next";
 import { ProductTable } from "./components/productTable";
-import { getProductsService } from "./api";
 import useProductModal from "./hooks/useProductModal";
 import ProductModalComponent from "./components/productModalComponent";
 import useProductOperations from "./hooks/useProductOperations";
+import { ProductsProvider } from "@/contexts/ProductsContext";
+import { Form } from "./components/Form";
 
-export default function ProductPage({ products }) {
+export default function ProductPage() {
   const { setShowModal, showModal } = useProductModal();
-  const { onSubmit, handleChangeName, handleChangePrice, editingProduct } =
-    useProductOperations();
+
+  const {
+    onSubmit,
+    handleChangeName,
+    handleChangePrice,
+    handleChangeCategory,
+    editingProduct,
+    product,
+  } = useProductOperations();
   return (
     <>
       <div className="my-3">
@@ -19,27 +26,20 @@ export default function ProductPage({ products }) {
           Agregar Producto
         </button>
         {showModal && (
-          <ProductModalComponent
-            setShowModal={setShowModal}
-            product={products}
-            handleChangeName={handleChangeName}
-            handleChangePrice={handleChangePrice}
-            onSubmit={onSubmit}
-            updatingProduct={editingProduct}
-          />
+          <ProductModalComponent setShowModal={setShowModal}>
+            <Form
+              handleChangeName={handleChangeName}
+              handleChangePrice={handleChangePrice}
+              handleChangeCategory={handleChangeCategory}
+              product={product}
+              onSubmit={onSubmit}
+              updatingProduct={editingProduct}
+            />
+          </ProductModalComponent>
         )}
       </div>
 
-      <ProductTable products={products} />
+      <ProductTable />
     </>
   );
 }
-export const getServerSideProps: GetServerSideProps = async () => {
-  const products = await getProductsService();
-
-  return {
-    props: {
-      products,
-    },
-  };
-};
