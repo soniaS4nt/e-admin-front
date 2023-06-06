@@ -36,7 +36,10 @@ export const getOneProductService = async (id: string) => {
   return data;
 };
 
-export const updateProductService = async (id: string, product: Product) => {
+export const updateProductService = async (
+  id: string,
+  product: Product
+): Promise<ProductWithId> => {
   const response: AxiosResponse<ProductWithId> = await getAxiosInstance({
     baseURL: "api-products",
   }).patch(`/updateBy/${id}`, product);
