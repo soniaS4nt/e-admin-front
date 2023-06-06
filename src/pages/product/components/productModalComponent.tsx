@@ -1,11 +1,4 @@
-export default function ProductModalComponent({
-  setShowModal,
-  product,
-  handleChangeName,
-  handleChangePrice,
-  onSubmit,
-  updatingProduct,
-}) {
+export default function ProductModalComponent({ setShowModal, children }) {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -31,56 +24,7 @@ export default function ProductModalComponent({
                 />
               </svg>
             </button>
-            <form>
-              <h1 className="mb-3 font-extrabold text-2xl">
-                {updatingProduct ? "Modificar Producto" : "Crear Producto"}
-              </h1>
-              <hr />
-              <div className="my-4">
-                <label
-                  htmlFor="product-name"
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Nombre del Producto
-                </label>
-                <input
-                  type="text"
-                  id="product-name"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Ingrese el nombre del producto"
-                  name="name"
-                  value={product.name}
-                  onChange={handleChangeName}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="product-price"
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Precio del Producto
-                </label>
-                <input
-                  type="number"
-                  id="product-price"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Ingrese el precio del producto"
-                  name="price"
-                  value={product.price}
-                  onChange={handleChangePrice}
-                  required
-                />
-              </div>
-              <div className="flex justify-end">
-                <button
-                  className="bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={onSubmit}
-                >
-                  {updatingProduct ? "Modificar" : "Crear"}
-                </button>
-              </div>
-            </form>
+            {children}
           </div>
         </div>
       </div>
